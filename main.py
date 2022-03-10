@@ -12,9 +12,6 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from functools import wraps
 
 
-## Delete this code:
-# import requests
-# posts = requests.get("https://api.npoint.io/43644ec4f0013682fc0d").json()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -37,26 +34,6 @@ login_manager.init_app(app)
 # cursor.execute('create table comment (id INTEGER PRIMARY KEY, author_id int, author varchar(250) NOT NULL, post_id int, text varchar(250) NOT NULL, FOREIGN KEY (author_id) REFERENCES user(id), FOREIGN KEY (post_id) REFERENCES blog_post(id))')
 # db.commit()
 
-
-##CONFIGURE TABLE
-# class BlogPost(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(250), unique=True, nullable=False)
-#     subtitle = db.Column(db.String(250), nullable=False)
-#     date = db.Column(db.String(250), nullable=False)
-#     body = db.Column(db.Text, nullable=False)
-#     author = db.Column(db.String(250), nullable=False)
-#     img_url = db.Column(db.String(250), nullable=False)
-
-
-##WTForm
-# class CreatePostForm(FlaskForm):
-#     title = StringField("Blog Post Title", validators=[DataRequired()])
-#     subtitle = StringField("Subtitle", validators=[DataRequired()])
-#     author = StringField("Your Name", validators=[DataRequired()])
-#     img_url = StringField("Blog Image URL", validators=[DataRequired(), URL()])
-#     body = CKEditorField("Blog Content", validators=[DataRequired()])
-#     submit = SubmitField("Submit Post")
 
 class User(UserMixin):
     def __init__(self, id, email, password, name):
